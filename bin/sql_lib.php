@@ -56,6 +56,18 @@
         }
         
         mysqli_close($connect);
+        
+        $connect = connect();
+        
+        $statement = "INSERT INTO site (design) VALUES ('template')";
+        
+        if(mysqli_query($connect, $statement)) {
+            //Success
+        } else {
+            //Error
+        }
+        
+        mysqli_close($connect);
     }
     
     function createUserTable() {
