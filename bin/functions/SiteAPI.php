@@ -128,7 +128,7 @@
             mysqli_close($connect);
         }
         
-        function setAuthorHelp[($authorHelp) {
+        function setAuthorHelp($authorHelp) {
             $connect = connect();
             
             $statement = "UPDATE site SET authorhelp='$authorHelp'";

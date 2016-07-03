@@ -48,6 +48,14 @@
             author VARCHAR(30) NOT NULL DEFAULT 'Unknown',
             authorhelp VARCHAR(50) NOT NULL DEFAULT 'Contact Unknown'
         )";
+        
+        if(mysqli_query($connect, $statement)) {
+            //Table created successfully.
+        } else {
+            echo "Error creating table: " . mysqli_error($connect);
+        }
+        
+        mysqli_close($connect);
     }
     
     function createUserTable() {
@@ -58,7 +66,7 @@
             username VARCHAR(30) NOT NULL,
             email VARCHAR(60) NOT NULL,
             password VARCHAR(300) NOT NULL,
-            name VARCHAR(50) NOT NULL,
+            name VARCHAR(50),
             role INT(3) NOT NULL DEFAULT 0,
             website VARCHAR(100),
             avatar VARCHAR(100) DEFAULT '/images/avatars/default.jpg',
