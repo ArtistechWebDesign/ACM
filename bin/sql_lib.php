@@ -74,25 +74,6 @@
         mysqli_close($connect);
     }
     
-    function getPageContent($page_name) {
-        $connect = connect();
-        
-        $statement = "SELECT content FROM pages WHERE name='$page_name'"; 
-        
-        if(mysqli_query($connect, $statement)) {
-            $result = mysqli_query($connect, $statement);
-            if(mysqli_num_rows($result) > 0) {
-            while($row = mysqli_fetch_assoc($result)) {
-                return $row["content"];
-            }
-        }
-        } else {
-            echo mysqli_error($connect);
-        }
-        
-        mysqli_close($connect);
-    }
-    
     function runRoleCheck($user, $required) {
         $connect = connect();
         $role = "";

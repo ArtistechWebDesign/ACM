@@ -43,6 +43,25 @@
             mysqli_close($connect);
         }
         
+        function getPageContent($id) {
+            $connect = connect();
+            
+            $statement = "SELECT content FROM pages WHERE id='$id'"; 
+            
+            if(mysqli_query($connect, $statement)) {
+                $result = mysqli_query($connect, $statement);
+                if(mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    return $row["content"];
+                }
+            }
+            } else {
+                echo mysqli_error($connect);
+            }
+            
+            mysqli_close($connect);
+        }
+        
         function setPageTitle($id, $title) {
             $connect = connect();
             
@@ -52,6 +71,25 @@
                 return 1;
             } else {
                 return 0;
+            }
+            
+            mysqli_close($connect);
+        }
+        
+        function getPageTitle($id) {
+            $connect = connect();
+            
+            $statement = "SELECT title FROM pages WHERE id='$id'"; 
+            
+            if(mysqli_query($connect, $statement)) {
+                $result = mysqli_query($connect, $statement);
+                if(mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    return $row["title"];
+                }
+            }
+            } else {
+                echo mysqli_error($connect);
             }
             
             mysqli_close($connect);
@@ -79,6 +117,25 @@
             } else {
                 return 0;
             }
+        }
+        
+        function getPageStatus($id) {
+            $connect = connect();
+            
+            $statement = "SELECT enabled FROM pages WHERE id='$id'"; 
+            
+            if(mysqli_query($connect, $statement)) {
+                $result = mysqli_query($connect, $statement);
+                if(mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    return $row["enabled"];
+                }
+            }
+            } else {
+                echo mysqli_error($connect);
+            }
+            
+            mysqli_close($connect);
         }
         
         function listPages() {

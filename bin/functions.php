@@ -5,8 +5,6 @@
     include $_SERVER['DOCUMENT_ROOT'] . "bin/functions/PageAPI.php";
     include $_SERVER['DOCUMENT_ROOT'] . "bin/functions/SiteAPI.php";
 
-    //Refresh Tables
-
     function refreshTables() {
         createUserTable();
         createPageTable();
@@ -31,24 +29,48 @@
         return UserAPI.uploadAvatar($user, $avatar);
     }
     
+    function getAvatar($user) {
+        return UserAPI.getAvatar($user);
+    }
+    
     function updateEmail($user, $email) {
         return UserAPI.updateEmail($user, $email);
+    }
+    
+    function getEmail($user) {
+        return UserAPI.getEmail($user);
     }
     
     function updateName($user, $name) {
         return UserAPI.updateName($user, $name);
     }
     
+    function getName($user) {
+        return UserAPI.getName($user);
+    }
+    
     function updateWebsite($user, $website) {
         return UserAPI.updateWebsite($user, $website);
+    }
+    
+    function getWebsite($user){
+        return UserAPI.getWebsite($user);
     }
     
     function updateUsername($id, $user) {
         return UserAPI.updateUsername($id, $user);
     }
     
+    function getId($user) {
+        return UserAPI.getId($user);
+    }
+    
     function updateRole($user, $role) {
         return UserAPI.updateRole($user, $role);
+    }
+    
+    function getRole($user) {
+        return UserAPI.getRole($user);
     }
     
     function listUsers() {
@@ -69,8 +91,16 @@
         return PageAPI.setPageContent($id, $content);
     }
     
+    function getPageContent($id) {
+        return PageAPI.getPageContent($id);
+    }
+    
     function setPageTitle($id, $title) {
         return PageAPI.setPageTitle($id, $title);
+    }
+    
+    function getPageTitle($id) {
+        return PageAPI.getPageTitle($id);
     }
     
     function enablePage($id) {
@@ -79,6 +109,10 @@
     
     function disablePage($id) {
         return PageAPI.disablePage($id);
+    }
+    
+    function getPageStatus($id) {
+        return PageAPI.getPageStatus($id);
     }
     
     function listPages() {

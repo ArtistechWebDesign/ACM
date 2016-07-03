@@ -62,6 +62,8 @@
             } else {
                 echo mysqli_error($connect);
             }
+            
+            mysqli_close($connect);
 
             $dir = "images/avatars/";
             $target_dir = $_SERVER['DOCUMENT_ROOT'] . $dir;
@@ -94,6 +96,8 @@
                 //Error code has already been returned.
             } else {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir . $id . "." . $imageFileType)) {
+                    $connect = connect();
+                    
                     $statement = "UPDATE users SET avatar='" . $dir . $id . "." . $imageFileType . "' WHERE username='$name'";
             
                     if(mysqli_query($connect, $statement)) {
@@ -115,6 +119,23 @@
             }
         }
         
+        function getAvatar($user) {
+            $connect = connect();
+            
+            $statement = "SELECT avatar FROM users WHERE username='$user'";
+            
+            if(mysqli_query($connect, $statement)) {
+                $result = mysqli_query($connect, $statement);
+                if(mysqli_now_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        return $row['avatar'];
+                    }
+                }
+            }
+            
+            mysqli_close($connect);
+        }
+        
         function updateEmail($user, $email) {
             $connect = connect();
             
@@ -124,6 +145,23 @@
                 return 1;
             } else {
                 return 0;
+            }
+            
+            mysqli_close($connect);
+        }
+        
+        function getEmail($user) {
+            $connect = connect();
+            
+            $statement = "SELECT email FROM users WHERE username='$user'";
+            
+            if(mysqli_query($connect, $statement)) {
+                $result = mysqli_query($connect, $statement);
+                if(mysqli_now_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        return $row['email'];
+                    }
+                }
             }
             
             mysqli_close($connect);
@@ -143,6 +181,23 @@
             mysqli_close($connect);
         }
         
+        function getName($user) {
+            $connect = connect();
+            
+            $statement = "SELECT name FROM users WHERE username='$user'";
+            
+            if(mysqli_query($connect, $statement)) {
+                $result = mysqli_query($connect, $statement);
+                if(mysqli_now_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        return $row['name'];
+                    }
+                }
+            }
+            
+            mysqli_close($connect);
+        }
+        
         function updateWebsite($user, $website) {
             $connect = connect();
             
@@ -152,6 +207,23 @@
                 return 1;
             } else {
                 return 0;
+            }
+            
+            mysqli_close($connect);
+        }
+        
+        function getWebsite($user) {
+            $connect = connect();
+            
+            $statement = "SELECT website FROM users WHERE username='$user'";
+            
+            if(mysqli_query($connect, $statement)) {
+                $result = mysqli_query($connect, $statement);
+                if(mysqli_now_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        return $row['website'];
+                    }
+                }
             }
             
             mysqli_close($connect);
@@ -171,6 +243,23 @@
             mysqli_close($connect);
         }
         
+        function getId($user) {
+            $connect = connect();
+            
+            $statement = "SELECT id FROM users WHERE username='$user'";
+            
+            if(mysqli_query($connect, $statement)) {
+                $result = mysqli_query($connect, $statement);
+                if(mysqli_now_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        return $row['avatar'];
+                    }
+                }
+            }
+            
+            mysqli_close($connect);
+        }
+        
         function updateRole($user, $role) {
             $connect = connect();
             
@@ -180,6 +269,23 @@
                 return 1;
             } else {
                 return 0;
+            }
+            
+            mysqli_close($connect);
+        }
+        
+        function getRole($user) {
+            $connect = connect();
+            
+            $statement = "SELECT role FROM users WHERE username='$user'";
+            
+            if(mysqli_query($connect, $statement)) {
+                $result = mysqli_query($connect, $statement);
+                if(mysqli_now_rows($result) > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        return $row['role'];
+                    }
+                }
             }
             
             mysqli_close($connect);
