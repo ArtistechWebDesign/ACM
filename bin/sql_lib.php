@@ -19,7 +19,7 @@
         $statement = "CREATE TABLE IF NOT EXISTS pages (
             id INT(0) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             title VARCHAR(100) NOT NULL,
-            url VARCHAR(100) NOT NULL,
+            url VARCHAR(200) NOT NULL,
             custom INT(1) NOT NULL,
             content LONGTEXT,
             enabled INT(1) NOT NULL DEFAULT 1

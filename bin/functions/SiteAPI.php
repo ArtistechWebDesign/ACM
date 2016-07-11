@@ -37,7 +37,7 @@
         
         $statement = "UPDATE site SET $keyToEdit='$name'";
         
-        if(mysql_query($connect, $statement)) {
+        if(mysqli_query($connect, $statement)) {
             return 1;
         } else {
             return 0;
