@@ -290,6 +290,37 @@
         mysqli_close($connect);
     }
     
+    function updateBio($user, $bio) {
+        $connect = connect();
+        
+        $statement = "UPDATE users SET bio='$bio' WHERE username='$user'";
+        
+        if(mysqli_query($connect, $statement)) {
+            return 1;
+        } else {
+            return 0;
+        }
+        
+        mysqli_close($connect);
+    }
+    
+    function getBio($user) {
+        $connect = connect();
+        
+        $statement = "SELECT bio FROM users WHERE username='$user'";
+        
+        if(mysqli_query($connect, $statement)) {
+            $result = mysqli_query($connect, $statement);
+            if(mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    return $row['bio'];
+                }
+            }
+        }
+        
+        mysqli_close($connect);
+    }
+    
     function listUsers() {
         $connect = connect();
         

@@ -1,5 +1,7 @@
 <!-- Function Include -->
-<?php include $_SERVER['DOCUMENT_ROOT'] . "bin/functions.php" ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . "bin/functions.php"; ?>
+<?php refreshTables(); ?>
+
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="/images/favicon.png" />

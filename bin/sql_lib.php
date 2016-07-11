@@ -82,7 +82,7 @@
             role INT(3) NOT NULL DEFAULT 0,
             website VARCHAR(100),
             avatar VARCHAR(100) DEFAULT '/images/avatars/default.jpg',
-            bio LONGTEXT
+            bio VARCHAR(500)
         )";
         
         if(mysqli_query($connect, $statement)) {

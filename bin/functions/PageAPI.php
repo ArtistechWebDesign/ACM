@@ -174,4 +174,21 @@
         
         mysqli_close($connect);
     }
+    
+    function getJSUserArray() {
+        $connect = connect();
+        
+        $statement = "SELECT username FROM users";
+        
+        if(mysqli_query($connect, $statement)) {
+            $result = mysqli_query($connect, $statement);
+            if(mysqli_num_rows($result) > 0) {
+                return mysqli_fetch_assoc($result);
+            } else {
+                return 0;
+            }
+        }
+        
+        return $return;
+    }
 }
