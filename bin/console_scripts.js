@@ -1056,47 +1056,7 @@ function processCommand() {
                 postResult("Incorect syntax. Correct usage: s_rolename [role]");
                 
             }
-        } else if(arg0 == "s_setfrontpage") {
-            if(size == 2) {
-                arg1 = commandArray[1];
-                
-                if(arg1 == 0 || arg1 == 1) {
-                    xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function() {
-                        if (xhttp.readyState == 4 && xhttp.status == 200) {
-                            var response = xhttp.responseText; 
-                            if(response == 1) {
-                                postResult("The value 'Front Page' has been updated.");
-                            } else {
-                                postResult("An error occurred.");
-                            }
-                        }
-                    };
-                    xhttp.open("GET", "/bin/console/commands.php?command=s_setfrontpage&arg1=" + arg1, true);
-                    xhttp.send();
-                } else {
-                    postResult("Please specify a value between 0 and 1.");
-                }
-            } else {
-                postResult("Incorect syntax. Correct usage: s_setfrontpage [0/1]");
-                
-            }
-        } else if(arg0 == "s_frontpage") {
-            if(size == 1) {
-                xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        var response = xhttp.responseText; 
-                        postResult("Front Page: " + response);
-                    }
-                };
-                xhttp.open("GET", "/bin/console/commands.php?command=s_frontpage");
-                xhttp.send();
-            } else {
-                postResult("Incorect syntax. Correct usage: s_frontpage");
-                
-            }
-        } else if(arg0 == "s_setauthor") {
+         } else if(arg0 == "s_setauthor") {
             if(size == 2) {
                 arg1 = commandArray[1];
                 
@@ -1174,7 +1134,14 @@ function processCommand() {
         }
     } else {
         if(arg0 == "refreshtables") {
-            
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    postResult("Tabled refreshed successfully.");
+                }
+            };
+            xhttp.open("GET", "/bin/console/commands.php?command=refreshtables");
+            xhttp.send();
         } else if(arg0 == "listusers") {
             
         } else if(arg0 == "listpages") {

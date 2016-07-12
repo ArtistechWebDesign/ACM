@@ -166,15 +166,6 @@
         echo s_rolename($arg1);
     }
     
-    if($c == "s_setfrontpage") {
-        $arg1 = $_REQUEST['arg1'];
-        echo s_setfrontpage($arg1);
-    }
-    
-    if($c == "s_frontpage") {
-        echo s_frontpage();
-    }
-    
     if($c == "s_setauthor") {
         $arg1 = $_REQUEST['arg1'];
         echo s_setauthor($arg1);
@@ -191,6 +182,11 @@
     
     if($c == "s_authorhelp") {
         echo s_authorhelp();
+    }
+    
+    if($c == "refreshtables") {
+        refreshTables();
+        echo 1;
     }
     
     /******************* COMMANDS BEGIN HERE *******************/
@@ -387,18 +383,6 @@
     
     function s_rolename($arg1) {
         return getRoleName($arg1);
-    }
-    
-    function s_setfrontpage($arg1) {
-        if(setFrontPageEnabled($arg1)) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-    
-    function s_frontpage() {
-        return getFrontPageEnabled();
     }
     
     function s_setauthor($arg1) {

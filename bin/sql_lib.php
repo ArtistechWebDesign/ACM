@@ -40,7 +40,6 @@
         $statement = "CREATE TABLE IF NOT EXISTS site (
             id INT(0) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             design VARCHAR(50) NOT NULL DEFAULT 'template',
-            frontpage INT(1) NOT NULL DEFAULT 1,
             role0 VARCHAR(30) NOT NULL DEFAULT 'User',
             role1 VARCHAR(30) NOT NULL DEFAULT 'Moderator',
             role2 VARCHAR(30) NOT NULL DEFAULT 'Site Manager',
@@ -90,33 +89,6 @@
         } else {
             echo "Error creating table: " . mysqli_error($connect);
         }
-        
-        mysqli_close($connect);
-    }
-    
-    function runRoleCheck($user, $required) {
-        $connect = connect();
-        $role = "";
-        
-        $statement = "SELECT role FROM users WHERE username='$user'";
-        
-        if(mysqli_query($connect, $statement)) {
-            $result = mysqli_query($connect, $statement);
-            if(mysqli_num_rows($result) > 0) {
-            while($row = mysqli_fetch_assoc($result)) {
-                $role = $row["role"];
-            }
-        }
-        } else {
-            echo mysqli_error($connect);
-        }
-        
-        if($role >= $required) {
-            return 1;
-        } else if($role < $required) {
-            return 0;
-        }
-        
         
         mysqli_close($connect);
     }

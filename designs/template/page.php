@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "bin/global-header.php"; ?>
-        
-        <?php 
-            createPageTable();
-            createUserTable();
-            
-            include $_SERVER['DOCUMENT_ROOT'] . "settings/active-design.php";
-            
-            session_start();
+        <?php
+            include_once $_SERVER['DOCUMENT_ROOT'] . "bin/head.php";
+            include_once $_SERVER['DOCUMENT_ROOT'] . "designs/" . $ad . "/head.php";
         ?>
-
-        <!-- Page Title -->
-        <title>Custom Page</title>
-        
-        <!-- Theme head.php -->
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "designs/" . $active_design . "/head.php" ?>
-        <link rel="stylesheet" href="<?php echo $_SERVER['DOCUMENT_ROOT'] . "designs/" . $active_design . "/custom-pages/template.php" ?>" type="text/css" />
+        <!-- Title -->
+        <title><?php echo getPageTitle($id); ?></title>
     </head>
     
     <body>
+        
         <header>
-            <?php include $_SERVER['DOCUMENT_ROOT'] . "designs/" . $active_design . "/header.php" ?>
-        <header>
+            <section>
+                <div id="logo-section">
+                    <img id="logo" src="/images/logo.png" alt="Logo" />
+                </div>
+            </section>
+            
+            <section>
+                <div id="nav-section">
+                    <!-- Main Nav Menu Here -->
+                </div>
+            </section>
+            
+            <section>
+                <div id="acc-section">
+                    <!-- Account Info Here -->
+                </div>
+            </section>
+        </header>
         
         <main>
-            <?php echo $page_content; ?>
+            <div id="page-content">
+                <p id="content-p">
+                    <?php
+                        echo getPageContent($id);
+                    ?>
+                </p>
+            </div> 
         </main>
         
         <footer>
-            <?php include $_SERVER['DOCUMENT_ROOT'] . "designs/" . $active_design . "/footer.php" ?>
-        </footer> 
+            <p id="footer-p">Powered by ACM; developed by Joe Furfaro</p>
+        </footer>
     </body>
+    
 </html>
